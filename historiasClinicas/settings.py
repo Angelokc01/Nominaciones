@@ -78,8 +78,8 @@ WSGI_APPLICATION = 'historiasClinicas.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': 'historiasClinicas_db',
-         'USER': 'historiasClinicas_user',
+         'NAME': 'historiasclinicas_db',
+         'USER': 'historiasclinicas_user',
          'PASSWORD': 'isis2503',
          'HOST': '10.128.0.60',
          'PORT': '',
@@ -151,7 +151,7 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
 ]
 
 AUTHENTICATION_BACKENDS = {
-    'monitoring.auth0backend.Auth0',
+    'historiasClinicas.auth0backend.Auth0',
     'django.contrib.auth.backends.ModelBackend',
 }
 
