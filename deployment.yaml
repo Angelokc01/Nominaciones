@@ -99,7 +99,7 @@ resources:
         type: ONE_TO_ONE_NAT
     tags:
       items: 
-      - historiaClinica-django
+      - auth-django
     metadata:
       items:
       - key: startup-script
