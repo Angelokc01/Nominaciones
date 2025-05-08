@@ -4,7 +4,7 @@
 <div class="content">
     <div class="">
         <div class="page-header-title">
-            <h4 class="page-title">Measurements</h4>
+            <h4 class="page-title">Historias</h4>
             <div style="text-align:right;">
                 <button type="button" class="btn btn-success waves-effect waves-light"
                         onClick=" window.location.href='/measurementcreate' " style="text-align:center;">+
@@ -24,7 +24,6 @@
                     <table class="table table-hover">
                         <thead>
                         <tr style="color:#0E2EB0">
-                            <th font color="red">Variable</th>
                             <th>Value</th>
                             <th>Unit</th>
                             <th>Place</th>
@@ -33,15 +32,15 @@
                         </thead>
                         <tbody>
 
-                        {% for measurement in measurement_list %}
+
                         <tr>
-                            <td>{{ measurement.variable.name }}</td>
-                            <td>{{ measurement.value }}</td>
-                            <td>{{ measurement.unit }}</td>
-                            <td>{{ measurement.place }}</td>
-                            <td>{{ measurement.dateTime }}</td>
+                            <td>1111</td>
+                            <td>222222222</td>
+                            <td>33333333333</td>
+                            <td>4444444444444</td>
+                            <td>55555555</td>
                         </tr>
-                        {% endfor %}
+    
 
                         </tbody>
                     </table>
@@ -49,7 +48,7 @@
                     <div style="text-align:center;">
                         <button type="button" class="btn btn-primary waves-effect waves-light"
                                 onClick=" window.location.href='/' ">
-                            Back
+
                         </button>
                     </div>
 
