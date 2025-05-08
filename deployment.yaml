@@ -1,37 +1,5 @@
-resources:
-# Firewall rules
-- name: authd-firewall-django
-  type: compute.v1.firewall
-  properties:
-    network: https://www.googleapis.com/compute/v1/projects/lab7-456818/global/networks/default
-    priority: 1000
-    direction: INGRESS
-    sourceRanges: 
-    - 0.0.0.0/0
-    targetTags:
-    - authd-django
-    allowed:
-    - IPProtocol: TCP
-      ports: 
-      - 8080
-
-- name: authd-firewall-db
-  type: compute.v1.firewall
-  properties:
-    network: https://www.googleapis.com/compute/v1/projects/lab7-456818/global/networks/default
-    priority: 1000
-    direction: INGRESS
-    sourceTags: 
-    - authd-django
-    targetTags:
-    - authd-db
-    allowed:
-    - IPProtocol: TCP
-      ports: 
-      - 5432
-
 # Database instance
-- name: authd-db-instance
+- name: hc-db
   type: compute.v1.instance
   properties:
     zone: us-central1-a
@@ -50,7 +18,7 @@ resources:
         type: ONE_TO_ONE_NAT
     tags:
       items: 
-      - authd-db
+      - hc-db
     metadata:
       items:
       - key: startup-script
@@ -66,7 +34,7 @@ resources:
           systemctl restart postgresql
 
 # Django instance
-- name: authd-django-instance
+- name: hc-django
   type: compute.v1.instance
   properties:
     zone: us-central1-a
@@ -85,7 +53,7 @@ resources:
         type: ONE_TO_ONE_NAT
     tags:
       items: 
-      - authd-django
+      - hc-django
     metadata:
       items:
       - key: startup-script
@@ -100,3 +68,4 @@ resources:
           pip3 install -r requirements.txt
           python3 manage.py makemigrations
           python3 manage.py migrate
+
