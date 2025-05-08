@@ -99,7 +99,7 @@ resources:
         type: ONE_TO_ONE_NAT
     tags:
       items: 
-      - auth-django
+      - authd-django
     metadata:
       items:
       - key: startup-script
