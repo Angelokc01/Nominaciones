@@ -1,3 +1,35 @@
+resources:
+# Firewall rules
+- name: hc-firewall-django
+  type: compute.v1.firewall
+  properties:
+    network: https://www.googleapis.com/compute/v1/projects/lab7-456818/global/networks/default
+    priority: 1000
+    direction: INGRESS
+    sourceRanges: 
+    - 0.0.0.0/0
+    targetTags:
+    - hc-django
+    allowed:
+    - IPProtocol: TCP
+      ports: 
+      - 8080
+
+- name: hc-firewall-db
+  type: compute.v1.firewall
+  properties:
+    network: https://www.googleapis.com/compute/v1/projects/lab7-456818/global/networks/default
+    priority: 1000
+    direction: INGRESS
+    sourceTags: 
+    - hc-django
+    targetTags:
+    - hc-db
+    allowed:
+    - IPProtocol: TCP
+      ports: 
+      - 5432
+
 # Database instance
 - name: hc-db
   type: compute.v1.instance
@@ -68,4 +100,3 @@
           pip3 install -r requirements.txt
           python3 manage.py makemigrations
           python3 manage.py migrate
-
