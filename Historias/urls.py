@@ -5,6 +5,6 @@ from django.conf.urls import url, include
 from . import views
 
 urlpatterns = [
-    path('historias/', views.measurement_list, name='historiaList'),
-    path('historiacreate/', csrf_exempt(views.measurement_create), name='historiaCreate'),
+    path('historias/', views.Historias_list, name='historiasList'),
+    path('historiacreate/', csrf_exempt(views.Historias_create), name='historiaCreate'),
 ]

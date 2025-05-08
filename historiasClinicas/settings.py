@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Historias',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,26 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static', 'media')
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
+
+LOGIN_URL = "/login/auth0"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "https://dev-znond25bgndcf8ju.us.auth0.com/v2/logout?returnTo=http%3A%2F%2F34.134.59.143:8080"
+
+SOCIAL_AUTH_TRAILING_SLASH = False  # Remove end slash from routes
+SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-znond25bgndcf8ju.us.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = '90xntTpeDTh3wkPmuQ8PONGETAirWWtr'
+SOCIAL_AUTH_AUTH0_SECRET = 'Z8c5ngrad_M26MqiINAEfPHYdsq6hwDoPMKXESkeC4Q17bNE8IyIcIxVM0RwNUvk'
+
+SOCIAL_AUTH_AUTH0_SCOPE = [
+    'openid',
+    'profile',
+    'email',
+    'role',
+]
+
+AUTHENTICATION_BACKENDS = {
+    'monitoring.auth0backend.Auth0',
+    'django.contrib.auth.backends.ModelBackend',
+}
+
+
