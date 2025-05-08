@@ -1,11 +1,10 @@
 from django import forms
-from .models import Measurement
+from .models import Historias
 
-class MeasurementForm(forms.ModelForm):
+class HistoriasForm(forms.ModelForm):
     class Meta:
-        model = Measurement
+        model = Historias
         fields = [
-            'variable',
             'value',
             'unit',
             'place',
@@ -13,7 +12,6 @@ class MeasurementForm(forms.ModelForm):
         ]
 
         labels = {
-            'variable' : 'Variable',
             'value' : 'Value',
             'unit' : 'Unit',
             'place' : 'Place',

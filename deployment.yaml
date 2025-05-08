@@ -58,8 +58,8 @@ resources:
           #!/bin/bash
           apt-get update
           apt-get install -y postgresql postgresql-contrib
-          sudo -u postgres psql -c "CREATE USER monitoring_user WITH PASSWORD 'isis2503';"
-          sudo -u postgres createdb -O monitoring_user monitoring_db
+          sudo -u postgres psql -c "CREATE USER historiasClinicas_user WITH PASSWORD 'isis2503';"
+          sudo -u postgres createdb -O historiasClinicas_user historiasClinicas_db
           echo "host all all 0.0.0.0/0 trust" >> /etc/postgresql/*/main/pg_hba.conf
           echo "listen_addresses='*'" >> /etc/postgresql/*/main/postgresql.conf
           echo "max_connections=2000" >> /etc/postgresql/*/main/postgresql.conf

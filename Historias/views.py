@@ -1,33 +1,33 @@
 from django.shortcuts import render
-from .forms import MeasurementForm
+from .forms import HistoriasForm
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .logic.logic_measurement import create_measurement, get_measurements
+from .logic.logic_Historias import create_historia, get_Historias
 from django.contrib.auth.decorators import login_required
 
 @login_required
-def measurement_list(request):
-    measurements = get_measurements()
+def Historias_list(request):
+    Historias = get_Historias()
     context = {
-        'measurement_list': measurements
+        'Historias_list': Historias
     }
-    return render(request, 'Measurement/measurements.html', context)
+    return render(request, 'Historias/Historias.html', context)
 
-def measurement_create(request):
+def Historias_create(request):
     if request.method == 'POST':
-        form = MeasurementForm(request.POST)
+        form = HistoriasForm(request.POST)
         if form.is_valid():
-            create_measurement(form)
-            messages.add_message(request, messages.SUCCESS, 'Measurement create successful')
-            return HttpResponseRedirect(reverse('measurementList'))
+            create_historia(form)
+            messages.add_message(request, messages.SUCCESS, 'Historias create successful')
+            return HttpResponseRedirect(reverse('HistoriasList'))
         else:
             print(form.errors)
     else:
-        form = MeasurementForm()
+        form = HistoriasForm()
 
     context = {
         'form': form,
     }
 
-    return render(request, 'Measurement/measurementCreate.html', context)
+    return render(request, 'Historias/HistoriasCreate.html', context)
