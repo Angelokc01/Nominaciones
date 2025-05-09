@@ -4,7 +4,7 @@
 <div class="content">
     <div class="">
         <div class="page-header-title">
-            <h4 class="page-title">Historias</h4>
+            <h4 class="page-title">Historias clinicas</h4>
             <div style="text-align:right;">
                 <button type="button" class="btn btn-success waves-effect waves-light"
                         onClick=" window.location.href='/measurementcreate' " style="text-align:center;">+
@@ -24,23 +24,24 @@
                     <table class="table table-hover">
                         <thead>
                         <tr style="color:#0E2EB0">
-                            <th>Value</th>
-                            <th>Unit</th>
-                            <th>Place</th>
-                            <th>Date Time</th>
+                            <th font color="red">Antecedentes</th>
+                            <th>Medicamentos</th>
+                            <th>Alergias</th>
+                            <th>Cirujias</th>
+                            <th>Notas</th>
                         </tr>
                         </thead>
                         <tbody>
 
-
+                        {% for historia in Historias_list %}
                         <tr>
-                            <td>1111</td>
-                            <td>222222222</td>
-                            <td>33333333333</td>
-                            <td>4444444444444</td>
-                            <td>55555555</td>
+                            <td>{{ historia.antecedentes }}</td>
+                            <td>{{ historia.medicamentos }}</td>
+                            <td>{{ historia.alergias }}</td>
+                            <td>{{ historia.cirujias }}</td>
+                            <td>{{ historia.notas }}</td>
                         </tr>
-    
+                        {% endfor %}
 
                         </tbody>
                     </table>
@@ -48,7 +49,7 @@
                     <div style="text-align:center;">
                         <button type="button" class="btn btn-primary waves-effect waves-light"
                                 onClick=" window.location.href='/' ">
-
+                            Back
                         </button>
                     </div>
 
