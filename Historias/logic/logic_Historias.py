@@ -1,8 +1,9 @@
 from ..models import Historias
 
 def get_Historias():
-    queryset = Historias.objects.all().order_by('-dateTime')[:10]
+    queryset = Historias.objects.all()  # No se ordena por fecha
     return (queryset)
+
 
 def create_historia(form):
     historia = form.save()

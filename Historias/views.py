@@ -13,7 +13,7 @@ def Historias_list(request):
     if role == "Medico":
         Historias = get_Historias()
         context = {
-          'HistoriasList': Historias
+          'Historias_list': Historias
         }
         return render(request, 'Measurement/Historias.html', context)
     else:
