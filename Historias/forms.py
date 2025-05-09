@@ -5,15 +5,18 @@ class HistoriasForm(forms.ModelForm):
     class Meta:
         model = Historias
         fields = [
-            'value',
-            'unit',
-            'place',
-            #'dateTime',
+            'antecedentes',
+            'medicamentos',
+            'alergias',
+            'cirujias',
+            'notas'
         ]
 
         labels = {
-            'value' : 'Value',
-            'unit' : 'Unit',
-            'place' : 'Place',
-            #'dateTime' : 'Date Time',
+            'antecedentes' : 'Antecedentes',
+            'medicamentos' : 'Medicamentos',
+            'alergias' : 'Alergias',
+            'cirujias' : 'Cirujias',
+            'notas' : 'Notas'
+            
         }
