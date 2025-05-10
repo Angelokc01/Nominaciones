@@ -3,7 +3,7 @@ resources:
 - name: hc-firewall-django
   type: compute.v1.firewall
   properties:
-    network: https://www.googleapis.com/compute/v1/projects/lab7-456818/global/networks/default
+    network: https://www.googleapis.com/compute/v1/projects/paginanominaciones/global/networks/default
     priority: 1000
     direction: INGRESS
     sourceRanges: 
@@ -18,7 +18,7 @@ resources:
 - name: hc-firewall-db
   type: compute.v1.firewall
   properties:
-    network: https://www.googleapis.com/compute/v1/projects/lab7-456818/global/networks/default
+    network: https://www.googleapis.com/compute/v1/projects/paginanominaciones/global/networks/default
     priority: 1000
     direction: INGRESS
     sourceTags: 
@@ -35,7 +35,7 @@ resources:
   type: compute.v1.instance
   properties:
     zone: us-central1-a
-    machineType: https://www.googleapis.com/compute/v1/projects/lab7-456818/zones/us-central1-a/machineTypes/e2-micro
+    machineType: https://www.googleapis.com/compute/v1/projects/paginanominaciones/zones/us-central1-a/machineTypes/e2-micro
     disks:
     - deviceName: boot
       type: PERSISTENT
@@ -44,7 +44,7 @@ resources:
       initializeParams:
         sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
     networkInterfaces:
-    - network: https://www.googleapis.com/compute/v1/projects/lab7-456818/global/networks/default
+    - network: https://www.googleapis.com/compute/v1/projects/paginanominaciones/global/networks/default
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
@@ -70,7 +70,7 @@ resources:
   type: compute.v1.instance
   properties:
     zone: us-central1-a
-    machineType: https://www.googleapis.com/compute/v1/projects/lab7-456818/zones/us-central1-a/machineTypes/e2-micro
+    machineType: https://www.googleapis.com/compute/v1/projects/paginanominaciones/zones/us-central1-a/machineTypes/e2-micro
     disks:
     - deviceName: boot
       type: PERSISTENT
@@ -79,7 +79,7 @@ resources:
       initializeParams:
         sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
     networkInterfaces:
-    - network: https://www.googleapis.com/compute/v1/projects/lab7-456818/global/networks/default
+    - network: https://www.googleapis.com/compute/v1/projects/paginanominaciones/global/networks/default
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
