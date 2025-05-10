@@ -93,10 +93,10 @@ resources:
           #!/bin/bash
           apt-get update
           apt-get install -y python3-pip git
-          mkdir -p /labs
-          cd /labs
-          git clone https://github.com/Angelokc01/historiasClinicas.git
-          cd historiasClinicas
+          mkdir -p /proyecto
+          cd /proyecto
+          git clone https://github.com/Angelokc01/Nominaciones.git
+          cd Nominaciones
           pip3 install -r requirements.txt
           python3 manage.py makemigrations
           python3 manage.py migrate

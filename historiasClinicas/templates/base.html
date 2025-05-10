@@ -5,7 +5,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block head %}
-        <title>HistoriasClinicas</title>
+        <title>Nominaciones del año</title>
         {% endblock %}
     </head>
     <body>
@@ -14,42 +14,15 @@
 
             <nav class="navbar navbar-light bg-light">
                 <a class="navbar-brand" href="/">
-                <img src="/static/media/logo2.png" width="45" height="45" alt="">
+                <img src="/static/media/santa.jgeg" width="45" height="45" alt="">
                 </a>
             </nav>
 
           <nav class="navbar navbar-light bg-light">
               <a class="navbar-brand" href="/">
-                  Historias clinicas app
+                  Nominaciones del año
               </a>
           </nav>
-
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/historiacreate/">Crear historia clinica</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/historias/">Ver historias clinicas</a>
-                </li>
-            </ul>
-
-              <form class="form-inline my-2 my-lg-0">
-                {% if user.is_authenticated %}
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a style="font-size:120%" class="nav-link">{{ user.username }}</a></li>
-                    <li><a style="font-size:120%; padding-right:20px" class="nav-link" href="/logout">Log out</a></li>
-                </ul>
-                {% else %}
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a style="font-size:120%; padding-right:20px" class="navbar-link" href="/login/auth0">Login</a></li>
-                </ul>
-                {% endif %}
-              </form>
-
-          </div>
-        </nav>
 
 
         <main> 
