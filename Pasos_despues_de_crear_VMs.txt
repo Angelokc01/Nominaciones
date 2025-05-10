@@ -1,0 +1,25 @@
+Pasos después de crear vm:
+-sudo python3 manage.py migrate
+-Sudo apt install gunicorn
+-sudo nano /etc/systemd/system/django.service
+
+[Unit]
+Description=Servidor Django usando Gunicorn
+After=network.target
+
+[Service]
+User=tu_usuario
+Group=www-data
+WorkingDirectory=/proyecto/historiasClinicas
+ExecStart=/usr/bin/gunicorn historiasClinicas.wsgi:application --bind 0.0.0.0:8080
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+
+-sudo systemctl daemon-reload
+-sudo systemctl enable django
+-sudo systemctl start django
+
+-sudo systemctl status django

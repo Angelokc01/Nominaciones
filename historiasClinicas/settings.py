@@ -81,7 +81,7 @@ DATABASES = {
          'NAME': 'historiasclinicas_db',
          'USER': 'historiasclinicas_user',
          'PASSWORD': 'isis2503',
-         'HOST': '10.128.0.21',
+         'HOST': '10.128.0.2',
          'PORT': '',
      }
  }
