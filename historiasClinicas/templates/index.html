@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nominaciones del año</title>
+  <title>Nominaciones</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body style="background-image: url('/static/media/amigos.jpeg'); background-size: cover; background-position: center;" class="min-h-screen flex items-center justify-center p-4">
 
   <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md text-center space-y-6">
     <h1 class="text-2xl font-bold text-gray-800">Nominaciones</h1>
-    
+
     <div class="flex flex-col space-y-4">
       <button onclick="verNominaciones()" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-xl transition-all">
         Ver nominaciones
@@ -28,6 +28,13 @@
         <option value="youtube">Link de YouTube</option>
         <option value="frase">Frase</option>
         <option value="foto">Foto</option>
+      </select>
+
+      <label id="labelQuien" class="block font-semibold text-gray-700 mt-2">¿Quién mandó el TikTok?</label>
+      <select id="quien" class="w-full rounded-lg border-gray-300 focus:ring focus:ring-indigo-300">
+        <option value="Santa">Santa</option>
+        <option value="Gonzalo">Gonzalo</option>
+        <option value="Angel">Ángel</option>
       </select>
 
       <div id="campoTexto">
@@ -59,25 +66,30 @@
       const campoImagen = document.getElementById("campoImagen");
       const input = document.getElementById("inputValor");
       const label = document.getElementById("labelInput");
+      const labelQuien = document.getElementById("labelQuien");
 
       if (tipo === "tiktok") {
         campoTexto.classList.remove("hidden");
         campoImagen.classList.add("hidden");
         label.innerText = "Pega el link de TikTok:";
         input.placeholder = "https://www.tiktok.com/...";
+        labelQuien.innerText = "¿Quién mandó el TikTok?";
       } else if (tipo === "youtube") {
         campoTexto.classList.remove("hidden");
         campoImagen.classList.add("hidden");
         label.innerText = "Pega el link de YouTube:";
         input.placeholder = "https://www.youtube.com/...";
+        labelQuien.innerText = "¿Quién mandó el YouTube?";
       } else if (tipo === "frase") {
         campoTexto.classList.remove("hidden");
         campoImagen.classList.add("hidden");
         label.innerText = "Escribe tu frase:";
         input.placeholder = "Ej. El que madruga, encuentra todo cerrado.";
+        labelQuien.innerText = "¿Quién mandó la frase?";
       } else if (tipo === "foto") {
         campoTexto.classList.add("hidden");
         campoImagen.classList.remove("hidden");
+        labelQuien.innerText = "¿Quién mandó la foto?";
       }
     }
 
@@ -87,6 +99,7 @@
 
     function enviarNominacion() {
       const tipo = document.getElementById("tipo").value;
+      const quien = document.getElementById("quien").value;
 
       if (tipo === "foto") {
         const file = document.getElementById("imagen").files[0];
@@ -94,14 +107,14 @@
           alert("Por favor sube una imagen.");
           return;
         }
-        alert(`Nominación enviada:\nTipo: Foto\nArchivo: ${file.name}`);
+        alert(`Nominación enviada:\nTipo: Foto\nQuién: ${quien}\nArchivo: ${file.name}`);
       } else {
         const valor = document.getElementById("inputValor").value.trim();
         if (!valor) {
           alert("Por favor ingresa un valor válido.");
           return;
         }
-        alert(`Nominación enviada:\nTipo: ${tipo}\nContenido: ${valor}`);
+        alert(`Nominación enviada:\nTipo: ${tipo}\nQuién: ${quien}\nContenido: ${valor}`);
       }
     }
 
@@ -125,3 +138,4 @@
 
 </body>
 </html>
+
