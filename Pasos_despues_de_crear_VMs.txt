@@ -10,8 +10,8 @@ After=network.target
 [Service]
 User=tu_usuario
 Group=www-data
-WorkingDirectory=/proyecto/historiasClinicas
-ExecStart=/usr/bin/gunicorn historiasClinicas.wsgi:application --bind 0.0.0.0:8080
+WorkingDirectory=/proyecto/Nominaciones
+ExecStart=/usr/bin/gunicorn Nominaciones.wsgi:application --bind 0.0.0.0:8080
 Restart=always
 
 [Install]
