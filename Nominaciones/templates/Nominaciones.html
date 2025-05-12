@@ -35,9 +35,10 @@
     </div>
 
     <div class="mt-6 text-center">
-      <a href="nominacionCreate/" class="text-indigo-600 hover:underline">Crear una nueva nominación</a><br>
-      <a href="" class="text-gray-500 hover:underline">Volver al inicio</a>
+      <a href="{% url 'nominacion-crear' %}" class="text-indigo-600 hover:underline">Crear una nueva nominación</a><br>
+      <a href="{% url 'index' %}" class="text-gray-500 hover:underline">Volver al inicio</a>
     </div>
   </div>
 </body>
 </html>
+
