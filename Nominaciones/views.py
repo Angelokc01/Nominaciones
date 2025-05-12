@@ -14,7 +14,7 @@ def crear_nominacion(request):
             frase=frase,
             foto=foto
         )
-        return redirect('nominaciones-lista')
+        return redirect('nominacionCreate')
 
     return render(request, 'nominacionCreate.html')
 
