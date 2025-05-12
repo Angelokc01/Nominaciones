@@ -1,8 +1,127 @@
-{% extends 'base.html' %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nominaciones del año</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body style="background-image: url('/static/media/amigos.jpeg'); background-size: cover; background-position: center;" class="min-h-screen flex items-center justify-center p-4">
 
-    <div style=" display: flex; align-items: center; justify-content: center;" class="login-box auth0-box before">
-            <img style="width:80%; " src="/static/media/amigos.jpeg" />
+  <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md text-center space-y-6">
+    <h1 class="text-2xl font-bold text-gray-800">Nominaciones</h1>
+    
+    <div class="flex flex-col space-y-4">
+      <button onclick="verNominaciones()" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-xl transition-all">
+        Ver nominaciones
+      </button>
+
+      <button onclick="toggleFormulario()" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-xl transition-all">
+        Crear nominación
+      </button>
     </div>
 
-{% endblock %}
+    <div id="formulario" class="hidden mt-4 text-left space-y-4">
+      <label class="block font-semibold text-gray-700">Tipo de nominación:</label>
+      <select id="tipo" onchange="cambiarInput()" class="w-full rounded-lg border-gray-300 focus:ring focus:ring-indigo-300">
+        <option value="tiktok">Link de TikTok</option>
+        <option value="youtube">Link de YouTube</option>
+        <option value="frase">Frase</option>
+        <option value="foto">Foto</option>
+      </select>
+
+      <div id="campoTexto">
+        <label id="labelInput" class="block mt-2 mb-1 text-gray-600">Pega el link de TikTok:</label>
+        <input type="text" id="inputValor" placeholder="https://www.tiktok.com/..." class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-300"/>
+      </div>
+
+      <div id="campoImagen" class="hidden">
+        <label class="block mt-2 mb-1 text-gray-600">Sube tu foto:</label>
+        <input type="file" id="imagen" accept="image/*" class="w-full px-3 py-2 border rounded-lg cursor-pointer bg-white"/>
+        <img id="preview" class="mt-2 rounded-xl max-h-48 hidden"/>
+      </div>
+
+      <button onclick="enviarNominacion()" class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-xl transition-all w-full">
+        Enviar
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function toggleFormulario() {
+      const form = document.getElementById("formulario");
+      form.classList.toggle("hidden");
+    }
+
+    function cambiarInput() {
+      const tipo = document.getElementById("tipo").value;
+      const campoTexto = document.getElementById("campoTexto");
+      const campoImagen = document.getElementById("campoImagen");
+      const input = document.getElementById("inputValor");
+      const label = document.getElementById("labelInput");
+
+      if (tipo === "tiktok") {
+        campoTexto.classList.remove("hidden");
+        campoImagen.classList.add("hidden");
+        label.innerText = "Pega el link de TikTok:";
+        input.placeholder = "https://www.tiktok.com/...";
+      } else if (tipo === "youtube") {
+        campoTexto.classList.remove("hidden");
+        campoImagen.classList.add("hidden");
+        label.innerText = "Pega el link de YouTube:";
+        input.placeholder = "https://www.youtube.com/...";
+      } else if (tipo === "frase") {
+        campoTexto.classList.remove("hidden");
+        campoImagen.classList.add("hidden");
+        label.innerText = "Escribe tu frase:";
+        input.placeholder = "Ej. El que madruga, encuentra todo cerrado.";
+      } else if (tipo === "foto") {
+        campoTexto.classList.add("hidden");
+        campoImagen.classList.remove("hidden");
+      }
+    }
+
+    function verNominaciones() {
+      alert("Aquí se mostrarán las nominaciones (funcionalidad no implementada).");
+    }
+
+    function enviarNominacion() {
+      const tipo = document.getElementById("tipo").value;
+
+      if (tipo === "foto") {
+        const file = document.getElementById("imagen").files[0];
+        if (!file) {
+          alert("Por favor sube una imagen.");
+          return;
+        }
+        alert(`Nominación enviada:\nTipo: Foto\nArchivo: ${file.name}`);
+      } else {
+        const valor = document.getElementById("inputValor").value.trim();
+        if (!valor) {
+          alert("Por favor ingresa un valor válido.");
+          return;
+        }
+        alert(`Nominación enviada:\nTipo: ${tipo}\nContenido: ${valor}`);
+      }
+    }
+
+    document.getElementById('imagen').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      const preview = document.getElementById('preview');
+
+      if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          preview.src = e.target.result;
+          preview.classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+      } else {
+        preview.src = '';
+        preview.classList.add('hidden');
+      }
+    });
+  </script>
+
+</body>
+</html>
